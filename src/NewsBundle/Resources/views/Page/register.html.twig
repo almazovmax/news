@@ -1,0 +1,71 @@
+{% extends "::base.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 technology-left">
+            <div class="blog">
+                <h2 class="text-center">Register</h2>
+                <hr>
+                {{ form_start(form, {
+                    'method': 'POST',
+                }) }}
+                {{ form_errors(form) }}
+                {{ form_row(form.username, {
+                    'attr': {
+                        'placeholder': 'Login'
+                    },
+                    'label_attr': {
+                        'class': 'sr-only'
+                    }
+                }) }}
+                {{ form_row(form.firstName, {
+                    'attr': {
+                        'placeholder': 'First name'
+                    },
+                    'label_attr': {
+                        'class': 'sr-only'
+                    }
+                }) }}
+                {{ form_row(form.lastName, {
+                    'attr': {
+                        'placeholder': 'Last name'
+                    },
+                    'label_attr': {
+                        'class': 'sr-only'
+                    }
+                }) }}
+                {{ form_row(form.email, {
+                    'attr': {
+                        'placeholder': 'Email'
+                    },
+                    'label_attr': {
+                        'class': 'sr-only'
+                    }
+                }) }}
+                {{ form_row(form.plainPassword.first, {
+                    'label': 'Password',
+                    'attr': {
+                        'placeholder': 'Password'
+                    },
+                    'label_attr': {
+                        'class': 'sr-only'
+                    },
+                }) }}
+                {{ form_row(form.plainPassword.second, {
+                    'label': 'Password',
+                    'attr': {
+                        'placeholder': 'Repeat Password'
+                    },
+                    'label_attr': {
+                        'class': 'sr-only'
+                    },
+                }) }}
+                {{ form_row(form._token) }}
+                <div class="text-right">
+                    <input class="btn btn-success" type="submit" name="submit" value="Sign Up">
+                </div>
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

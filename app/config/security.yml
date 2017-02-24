@@ -1,0 +1,41 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    providers:
+        our_db_provider:
+            entity:
+                class: NewsBundle:User
+                property: username
+
+    encoders:
+        NewsBundle\Entity\User:
+            algorithm: bcrypt
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            provider: our_db_provider
+
+            form_login:
+                login_path: /login
+                check_path: /login
+
+            logout:
+                path:   /logout
+                target: /login
+            anonymous: ~
+
+    role_hierarchy:
+            ROLE_ADMIN: ROLE_USER
+
+    access_control:
+            - { path: ^/login, allow_if: "not has_role('ROLE_USER')" }
+            - { path: ^/register, allow_if: "not has_role('ROLE_USER')" }
+            - { path: ^/news, roles: ROLE_ADMIN }
+            - { path: ^/user, roles: ROLE_ADMIN }
+            - { path: ^/show, roles: ROLE_USER }
+            - { path: ^/, roles: ROLE_USER }

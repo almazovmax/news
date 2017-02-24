@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 technology-left">
+            <div class="blog">
+                <h2 class="text-center">Change Role User</h2>
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ edit_form.vars.value.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Usernsme</th>
+                        <td>{{ edit_form.vars.value.username }}</td>
+                    </tr>
+                    <tr>
+                        <th>First name</th>
+                        <td>{{ edit_form.vars.value.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last name</th>
+                        <td>{{ edit_form.vars.value.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ edit_form.vars.value.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Role</th>
+                        <td>
+                            {{ form_start(edit_form) }}
+                            {{ form_errors(edit_form) }}
+                            {{ form_row(edit_form.role, {
+                                'attr': {
+                                    'class': 'form-control'
+                                },
+                                'label_attr':{
+                                    'class': 'sr-only'
+                                }
+                            }) }}
+                            {{ form_row(edit_form._token) }}
+                        </td>
+                    </tr>
+                </table>
+                <p class="text-right">
+                    <input class="btn btn-success" type="submit" name="submit" value="Edit">
+                    {{ form_end(edit_form, {'render_rest': false}) }}
+                </p>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

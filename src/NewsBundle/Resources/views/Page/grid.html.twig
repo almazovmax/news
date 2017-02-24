@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 technology-left">
+            <div class="blog">
+                <p class="text-center text-success">{{ message }}</p>
+                <div class="col-md-6">
+                    <h2 class="w3">LIST OF NEWS</h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-right">
+                        <a class="btn btn-info" href="{{ path('news_new') }}">Add new</a>
+                    </div>
+                </div>
+                <div class="blog-grids1">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Header</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for news in news %}
+                            <tr>
+                                <td>{{ news.id }}</td>
+                                <td>{{ news.header }}</td>
+                                <td>{{ news.description }}</td>
+                                <td>{{ news.date|date('Y-m-d') }}</td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="{{ path('news_edit', { 'id': news.id }) }}">
+                                                <span style="cursor: pointer" class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('news_delete', {'id': news.id}) }}" onclick="return confirm('Are you sure?')">
+                                                <span style="cursor: pointer" class="glyphicon glyphicon-remove"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{ knp_pagination_render(news) }}
+        </div>
+    </div>
+{% endblock %}

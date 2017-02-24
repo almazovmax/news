@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="col-md-8 col-md-offset-2 technology-left">
+        <div class="agileinfo">
+            <h2 class="w3">{{ news.header }}</h2>
+            <h4>{{ news.date|date('F d, Y') }}</h4>
+            <div class="single">
+                <img src="{{ asset(news.image) }}" class="img-responsive" alt="">
+                <div class="b-bottom">
+                    <h5 class="top text-justify">{{ news.description }}
+                    </h5>
+                    <p class="sub">{{ news.text }}</p>
+                        <a href="{{ path('index') }}">Back to the list</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

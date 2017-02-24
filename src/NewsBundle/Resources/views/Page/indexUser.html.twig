@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 technology-left">
+            <div class="blog">
+                <div class="col-md-6">
+                    <h2 class="w3">List of Users</h2>
+                </div>
+                <div class="blog-grids1">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.role }}</td>
+                                <td class="text-center">
+                                    <a href="{{ path('user_edit', { 'id': user.id }) }}">
+                                        <span style="cursor: pointer" class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{ knp_pagination_render(users) }}
+        </div>
+    </div>
+{% endblock %}
