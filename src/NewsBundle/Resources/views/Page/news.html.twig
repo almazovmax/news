@@ -12,7 +12,11 @@
                     <h5 class="top text-justify">{{ news.description }}
                     </h5>
                     <p class="sub">{{ news.text }}</p>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('news_index') }}">Back to the list</a>
+                    {% else %}
                         <a href="{{ path('index') }}">Back to the list</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="clearfix"></div>
