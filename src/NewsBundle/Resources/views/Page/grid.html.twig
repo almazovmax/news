@@ -28,7 +28,7 @@
                         {% for news in news %}
                             <tr>
                                 <td>{{ news.id }}</td>
-                                <td>{{ news.header }}</td>
+                                <td><a href="{{ path('news_show', { 'id': news.id }) }}">{{ news.header }}</a></td>
                                 <td>{{ news.description }}</td>
                                 <td>{{ news.date|date('Y-m-d') }}</td>
                                 <td>

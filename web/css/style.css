@@ -1596,13 +1596,11 @@ span.glyphicon.glyphicon-comment, span.glyphicon.glyphicon-eye-open, span.glyphi
     display: block;
     font-weight: 600;
     text-decoration: none;
-    text-transform: capitalize;
 }
 .blog-grid-right1 a:hover{
 	color:#fa4b2a;
 }
 .blog-grid-right1 h4{
-	text-transform: capitalize;
     font-size: 1em;
     color: #fa4b2a;
     margin: 0.5em 0;

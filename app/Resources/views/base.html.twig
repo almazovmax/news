@@ -34,6 +34,8 @@
         <div class="col-md-6 text-right">
             {% if is_granted('ROLE_USER') %}
                 <a class="btn btn-info" href="{{ path('logout') }}">Logout</a>
+            {% else %}
+                <a class="btn btn-info" href="{{ path('login') }}">Login</a>
             {% endif %}
         </div>
     </div>
