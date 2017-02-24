@@ -16,14 +16,32 @@
                 <h2 class="text-center">Edit news ID {{ edit_form.vars.value.id }}</h2>
                 {{ form_start(edit_form) }}
                 <div class="form-group">
-                    {{ form_row(edit_form.header, {
+                    {{ form_label(edit_form.header) }}
+                    {% if form_errors(edit_form.header) %}
+                        <ul class="list-unstyled">
+                            <li class="text-danger">
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                {{ form_errors(edit_form.header)|striptags }}
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {{ form_widget(edit_form.header, {
                         'attr': {
                             'class':'form-control'
                         }
                     }) }}
                 </div>
                 <div class="form-group">
-                    {{ form_row(edit_form.description, {
+                    {{ form_label(edit_form.description) }}
+                    {% if form_errors(edit_form.description) %}
+                        <ul class="list-unstyled">
+                            <li class="text-danger">
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                {{ form_errors(edit_form.description)|striptags }}
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {{ form_widget(edit_form.description, {
                         'attr': {
                             'rows': 4,
                             'class':'form-control'
@@ -31,7 +49,16 @@
                     }) }}
                 </div>
                 <div class="form-group">
-                    {{ form_row(edit_form.text, {
+                    {{ form_label(edit_form.text) }}
+                    {% if form_errors(edit_form.text) %}
+                        <ul class="list-unstyled">
+                            <li class="text-danger">
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                {{ form_errors(edit_form.text)|striptags }}
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {{ form_widget(edit_form.text, {
                         'attr': {
                             'rows': 8,
                             'class':'form-control'
@@ -39,6 +66,15 @@
                     }) }}
                     {{ form_row(edit_form._token) }}
                 </div>
+                {{ form_label(edit_form.image) }}
+                {% if form_errors(edit_form.image) %}
+                    <ul class="list-unstyled">
+                        <li class="text-danger">
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            {{ form_errors(edit_form.image)|striptags }}
+                        </li>
+                    </ul>
+                {% endif %}
                 <div class="input-group image-preview">
                     <input type="text" class="form-control image-preview-filename" disabled="disabled">
                     <span class="input-group-btn">
@@ -48,7 +84,7 @@
                 <div class="btn btn-default image-preview-input">
                     <span class="glyphicon glyphicon-folder-open"></span>
                     <span class="image-preview-input-title">Browse</span>
-                    {{ form_row(edit_form.image, {
+                    {{ form_widget(edit_form.image, {
                         'label_attr':{
                             'class': 'sr-only'
                         },

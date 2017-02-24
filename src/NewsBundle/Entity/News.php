@@ -56,7 +56,7 @@ class News
 
     /**
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/jpg"})
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/png", "image/jpg"})
      */
     private $image;
 
